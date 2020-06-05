@@ -1,10 +1,10 @@
 import React from "react";
 
-import TaskList from "./TaskList";
+import { PureTaskList } from "./TaskList";
 import { taskData, actionsData } from "./Task.stories";
 
 export default {
-  component: TaskList,
+  component: PureTaskList,
   title: "TaskList",
   decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>], // ストーリーをwrapする 表示の共通styleなど
   excludeStories: /.*Data$/,
@@ -27,13 +27,15 @@ export const withPinnedTaskData = [
 // 表示は順番
 
 export const Default = () => (
-  <TaskList tasks={defaultTasksData} {...actionsData} />
+  <PureTaskList tasks={defaultTasksData} {...actionsData} />
 );
 
 export const WithPinnedTasks = () => (
-  <TaskList tasks={withPinnedTaskData} {...actionsData} />
+  <PureTaskList tasks={withPinnedTaskData} {...actionsData} />
 );
 
-export const Loading = () => <TaskList loading tasks={[]} {...actionsData} />;
+export const Loading = () => (
+  <PureTaskList loading tasks={[]} {...actionsData} />
+);
 
-export const Empty = () => <TaskList tasks={[]} {...actionsData} />;
+export const Empty = () => <PureTaskList tasks={[]} {...actionsData} />;
